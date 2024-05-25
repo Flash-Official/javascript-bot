@@ -33,8 +33,8 @@ callback: async (client, interaction) => {
     return;
     }
 
-    const requestUserRolePosition = interaction.member.roles.highest.position; // Highest role of the user running the cmd
-    const botRolePosition = interaction.guild.members.me.roles.highest.position; // Highest role of the bot
+    const requestUserRolePosition = interaction.member.roles.highest.position; 
+    const botRolePosition = interaction.guild.members.me.roles.highest.position; 
     try {
         
         await interaction.guild.members.unban(targetUserId,reason)
