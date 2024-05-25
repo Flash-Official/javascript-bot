@@ -16,25 +16,20 @@ callback: async (client, interaction) => {
     const targetUserId = interaction.options.get('user-id').value;
     const reason =
     interaction.options.get('reason')?.value || 'No reason provided';
-
     await interaction.deferReply();
+    
+    
     const ban=await interaction.guild.bans.fetch(targetUserId)
+    console.log(ban);
     const targetUser = await ban.user.fetch();
+    console.log(targetUser)
 
     if (!targetUser) {
-    await interaction.editReply("That user doesn't exist in this server.");
-    return;
+        await interaction.editReply("That user is either not banned or wasn't in the guild");
+        return;
     }
+    
 
-    if (targetUser.id === interaction.guild.ownerId) {
-    await interaction.editReply(
-        "You can't unban that user because they're the server owner."
-    );
-    return;
-    }
-
-    const requestUserRolePosition = interaction.member.roles.highest.position; 
-    const botRolePosition = interaction.guild.members.me.roles.highest.position; 
     try {
         
         await interaction.guild.members.unban(targetUserId,reason)
@@ -43,6 +38,8 @@ callback: async (client, interaction) => {
     );
     } catch (error) {
     console.log(`There was an error when banning: ${error}`);
+    await interaction.editReply("That user is either not banned or wasn't in the guild");
+        
     }
 },
 
