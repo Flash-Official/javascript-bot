@@ -20,9 +20,7 @@ callback: async (client, interaction) => {
     
     
     const ban=await interaction.guild.bans.fetch(targetUserId)
-    console.log(ban);
     const targetUser = await ban.user.fetch();
-    console.log(targetUser)
 
     if (!targetUser) {
         await interaction.editReply("That user is either not banned or wasn't in the guild");

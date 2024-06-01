@@ -41,7 +41,7 @@ module.exports={
                 imgURL = result1.displayAvatarURL({size: 2048})
                 interaction.reply({
                     content: imgURL,
-                    ephemeral: false,
+                    ephemeral: false, 
         
             })
             });
