@@ -59,7 +59,7 @@ callback: async (client, interaction) => {
     }
 },
 
-name: 'timeout-remove',
+name: 'unmute',
 description: 'removes Time-out from a member from this server.',
 options: [
     {
@@ -75,6 +75,7 @@ options: [
     },
 ],
 devOnly:false,
-permissionsRequired: [PermissionFlagsBits.BanMembers],
-botPermissions: [PermissionFlagsBits.BanMembers],
+// deleted:true,
+permissionsRequired: [PermissionFlagsBits.Administrator],
+botPermissions: [PermissionFlagsBits.Administrator],
 };

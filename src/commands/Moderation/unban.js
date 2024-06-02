@@ -57,6 +57,6 @@ options: [
     },
 ],
 deleted:false,
-permissionsRequired: [PermissionFlagsBits.BanMembers],
-botPermissions: [PermissionFlagsBits.BanMembers],
+permissionsRequired: [PermissionFlagsBits.Administrator],
+botPermissions: [PermissionFlagsBits.Administrator],
 };

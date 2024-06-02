@@ -108,7 +108,7 @@ callback: async (client, interaction) => {
     }
 },
 
-name: 'timeout',
+name: 'mute',
 description: 'Time\'s out  a member from this server.',
 options: [
     {
@@ -130,6 +130,7 @@ options: [
     },
 ],
 devOnly:false,
-permissionsRequired: [PermissionFlagsBits.BanMembers],
-botPermissions: [PermissionFlagsBits.BanMembers],
+// deleted:true,
+permissionsRequired: [PermissionFlagsBits.Administrator],
+botPermissions: [PermissionFlagsBits.Administrator],
 };
