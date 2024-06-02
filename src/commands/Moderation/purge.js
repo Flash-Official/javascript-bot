@@ -16,19 +16,28 @@ module.exports = {
 
 callback: async (client, interaction) => {
     const amount = interaction.options.get('number').value;
-    const channelid =interaction.options.get('channel')?.value;
+    let channelid =interaction.options.get('channel')?.value;
 
     let Channel;
     if(isNumber(channelid)){
         Channel=client.channels.cache.get(channelid)
     }else{
         Channel=interaction.channel
+
+        channelid=interaction.channel.id
+    }
+    if(amount>=100){
+        interaction.reply({
+            content:`The max number of messages deleted should be 100\nInput was ${amount}`,
+            ephemeral:false,
+        })
+        return;
     }
     
     try {
         Channel.bulkDelete(amount)
         interaction.reply({
-            content:``,
+            content:`Deleted ${amount} messages in the channel <#${channelid}> `,
             ephemeral:false,
         })
 
