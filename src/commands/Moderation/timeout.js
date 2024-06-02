@@ -129,7 +129,7 @@ options: [
     type: ApplicationCommandOptionType.String,
     },
 ],
-devOnly:true,
+devOnly:false,
 permissionsRequired: [PermissionFlagsBits.BanMembers],
 botPermissions: [PermissionFlagsBits.BanMembers],
 };
