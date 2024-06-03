@@ -1,5 +1,6 @@
 const path = require('path');
 const getAllFiles = require('../utils/getAllFiles');
+const { messageLink } = require('discord.js');
 
 module.exports = (client) => {
   const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
@@ -22,12 +23,26 @@ module.exports = (client) => {
     if(msg.author.bot){
         return
     }
-    if(msg.content.toLowerCase().includes("hello")) {
+    if(msg.channel.type==1){
+      client.channels.cache.get("1247139326584688671").send(`From:${msg.author}\nContent:\`\`\`${msg.content}\`\`\``);
+
+    }
+    if(msg.content.toLowerCase().includes("your bot")) {
         msg.reply("Hey!")
     }
     if(msg.content.toLowerCase().includes("flash")){
         const flash="1105482048656916572"
-        msg.reply(`<@${flash}>,The Creator,maybe he is here`)
+        msg.reply(`Are you talking about Flash, the hot daddy?`)
+        link=msg.messageLink
+    }
+    if(msg.content.toLowerCase().includes("shaunie")){
+      msg.reply("Are you talking about Shaunie,the sexy man? :speaking_head: :fire:")
+    }
+    if(msg.content.toLowerCase().includes("sentient")){
+      msg.reply("Are you talking about sentient,the child lover? 👶💋")
+    }
+    if(msg.content.toLowerCase().includes("astra")){
+      msg.reply("Are you talking about Astra,the black nigger? 👽👺👹🤢🤮🫨👤😈")
     }
     
 });
