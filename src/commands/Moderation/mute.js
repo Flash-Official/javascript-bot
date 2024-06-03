@@ -77,22 +77,41 @@ callback: async (client, interaction) => {
 
         }
     }
-
+    let tim;
     if(["days","day","d",].includes(timing.toLowerCase())){
         duration=num*24*60*60*1000
+        if(num==1){
+            tim="day"
+        }else{
+            tim="days"
+        }
 
     }
     else if(["hours","hour","h"].includes(timing.toLowerCase())){
         duration=num*60*60*1000
+        if(num==1){
+            tim="hour"
+        }else{
+            tim="hours"
+        }
 
     }
     else if(["minutes","min","m","minute"].includes(timing.toLowerCase())){
         durations=num*60*1000
-        
+        if(num==1){
+            tim="minute"
+        }else{
+            tim="minutes"
+        }
     }
 
     else if(["seconds","second","s","secs"].includes(timing.toLowerCase())){
         duration=num*1000
+        if(num==1){
+            tim="second"
+        }else{
+            tim="seconds"
+        }
     }
     
         
@@ -101,7 +120,7 @@ callback: async (client, interaction) => {
     try {
     await targetUser.timeout(duration,reason)
     await interaction.editReply(
-        `User ${targetUser} was timed-out\nReason: ${reason}`
+        `User ${targetUser} was timed-out\nDuration:${num} ${tim}\nReason: ${reason}`
     );
     } catch (error) {
     console.log(`There was an error when time-ing out: ${error}`);
