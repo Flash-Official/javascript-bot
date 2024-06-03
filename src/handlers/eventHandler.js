@@ -23,27 +23,30 @@ module.exports = (client) => {
     if(msg.author.bot){
         return
     }
-    if(msg.channel.type==1){
+    else if(msg.channel.type==1){
       client.channels.cache.get("1247139326584688671").send(`From:${msg.author}\nContent:\`\`\`${msg.content}\`\`\``);
 
     }
-    if(msg.content.toLowerCase().includes("your bot")) {
-        msg.reply("Hey!")
+    else if(msg.content.toLowerCase().includes("your bot")) {
+        msg.reply("Talking about me?\nYoung lads")
     }
-    if(msg.content.toLowerCase().includes("flash")){
+    else if(msg.content.toLowerCase().includes("flash")){
         const flash="1105482048656916572"
-        msg.reply(`Are you talking about Flash, the hot daddy?`)
+        msg.reply(`Are you talking about Flash, the hot daddy? :hot_face: :speaking_head: :fire: :fire: :yum: `)
         link=msg.messageLink
     }
-    if(msg.content.toLowerCase().includes("shaunie")){
+    else if(msg.content.toLowerCase().includes("shaunie")){
       msg.reply("Are you talking about Shaunie,the sexy man? :speaking_head: :fire:")
     }
-    if(msg.content.toLowerCase().includes("sentient")){
+    else if(msg.content.toLowerCase().includes("sentient")){
       msg.reply("Are you talking about sentient,the child lover? 👶💋")
     }
-    if(msg.content.toLowerCase().includes("astra")){
+    else if(msg.content.toLowerCase().includes("astra")){
       msg.reply("Are you talking about Astra,the black nigger? 👽👺👹🤢🤮🫨👤😈")
     }
-    
+    else if(msg.content.toLowerCase().includes("aasakt")){
+      msg.reply("Are you talking about Aasakt,Milky boy, bahar se safed andar se kala and taller than flash ? :rage: :pray: :yum: :speaking_head: :fire: ")
+    }
+
 });
 };
