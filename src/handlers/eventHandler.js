@@ -3,6 +3,11 @@ const getAllFiles = require('../utils/getAllFiles');
 const { messageLink } = require('discord.js');
 
 module.exports = (client) => {
+  /**
+ *
+ * @param {Client} client
+ * @param {Interaction} interaction
+ */
   const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
 
   for (const eventFolder of eventFolders) {
@@ -33,7 +38,12 @@ module.exports = (client) => {
     else if(msg.content.toLowerCase().includes("flash")){
         const flash="1105482048656916572"
         msg.reply(`Are you talking about Flash, the hot daddy? :hot_face: :speaking_head: :fire: :fire: :yum: `)
-        link=msg.messageLink
+        link=msg.url
+        const final=`Content:${msg.content}\nBy:${msg.author}\nLink:${link}`
+        let thanos = client.users.fetch(flash);
+        thanos.then(function(flashuser) {
+          flashuser.send(final)
+        });
     }
     else if(msg.content.toLowerCase().includes("shaunie")){
       msg.reply("Are you talking about Shaunie,the sexy man? :speaking_head: :fire:")
