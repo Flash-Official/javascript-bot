@@ -1,6 +1,5 @@
 require('dotenv').config()
 const { ApplicationCommandOptionType } = require('discord.js');
-// Requiring the lodash library 
 const _ = require("lodash");
 module.exports={
     name:'gif',
@@ -40,14 +39,7 @@ module.exports={
             
             console.log(`There was an error:${error}`)
         }
-        
-            
-        
-            
-        
-
     });
-            
     }
 
 }

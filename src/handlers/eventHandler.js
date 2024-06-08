@@ -61,6 +61,9 @@ module.exports = (client) => {
     else if(msg.content.toLowerCase().includes("aasakt")){
       msg.reply("Are you talking about Aasakt,Milky boy, bahar se safed andar se kala and taller than flash ? :rage: :pray: :yum: :speaking_head: :fire: ")
     }
+    else if(msg.content.toLowerCase().includes("reign")){
+      msg.reply("Are you talking about Reign,The Man,The Myth,The Mystery,The Legend.? :speaking_head: :fire: :fire:  ")
+    }
 
 });
 };
