@@ -3,15 +3,18 @@ const areCommandsDifferent = require('../../utils/areCommandsDifferent');
 const getApplicationCommands = require('../../utils/getApplicationCommands');
 const getLocalCommands = require('../../utils/getLocalCommands');
 
-module.exports = async (client) => { 
-    
-
+module.exports = async (client) => {
+  const serv=client.guilds.cache
+  for(const server of serv){
+    const serverid=server.id
+  
     try {
       const localCommands = getLocalCommands();
       const applicationCommands = await getApplicationCommands(
         client,
-        testServer
+        serverid
       );
+    
 
       for (const localCommand of localCommands) {
         const { name, description, options } = localCommand;
@@ -20,7 +23,7 @@ module.exports = async (client) => {
           (cmd) => cmd.name === name
         );
 
-        if (existingCommand) {
+        if (existingCommand) { 
           if (localCommand.deleted) {
             await applicationCommands.delete(existingCommand.id);
             console.log(`🗑 Deleted command "${name}".`);
@@ -55,5 +58,6 @@ module.exports = async (client) => {
     } catch (error) {
       console.log(`There was an error: ${error}`);
     }
+  }
   
 };

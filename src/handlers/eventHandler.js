@@ -8,6 +8,9 @@ module.exports = (client) => {
  * @param {Client} client
  * @param {Interaction} interaction
  */
+  
+  
+  
   const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
 
   for (const eventFolder of eventFolders) {
@@ -24,6 +27,7 @@ module.exports = (client) => {
     });
     
   }
+
   client.on("messageCreate",(msg) => {
     if(msg.author.bot){
         return
