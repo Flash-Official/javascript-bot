@@ -36,12 +36,15 @@ module.exports = (client) => {
       client.channels.cache.get("1247139326584688671").send(`From:${msg.author}\nContent:\`\`\`${msg.content}\`\`\``);
 
     }
+    
     else if(msg.content.toLowerCase().includes("your bot")) {
         msg.reply("Talking about me?\nYoung lads")
     }
     else if(msg.content.toLowerCase().includes("flash")){
         const flash="1105482048656916572"
+        if(msg.content.toLowerCase().includes("..")){
         msg.reply(`Are you talking about Flash, the hot daddy? :hot_face: :speaking_head: :fire: :fire: :yum: `)
+        }
         link=msg.url
         const final=`Content:${msg.content}\nBy:${msg.author}\nLink:${link}`
         let thanos = client.users.fetch(flash);
@@ -49,6 +52,9 @@ module.exports = (client) => {
           flashuser.send(final)
         });
     }
+    
+      
+    
     else if(msg.content.toLowerCase().includes("shaunie")){
       msg.reply("Are you talking about Shaunie,the sexy man? :speaking_head: :fire:")
     }
@@ -63,7 +69,18 @@ module.exports = (client) => {
     }
     else if(msg.content.toLowerCase().includes("reign")){
       msg.reply("Are you talking about Reign,The Man,The Myth,The Mystery,The Legend.? :speaking_head: :fire: :fire:  ")
+
     }
+    else if(msg.content.toLowerCase().includes("zar")){
+      msg.reply("Are you talking bout zar, the 72 legend zar 🫵🏾 🦍")
+    }
+    else if(msg.content.toLowerCase().includes("leejah")){
+      msg.reply("Are you talking about Leejah,the chappal chor ? 😎✋")
+    }
+    else if(msg.content.toLowerCase().includes("display")){
+      msg.reply("Are you talking about Display,The almighty god of super ultimate epic legendary coolness? 😎🤙")
+    }
+  
 
 });
 };

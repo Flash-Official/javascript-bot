@@ -26,7 +26,7 @@ callback: async (client, interaction) => {
 
         channelid=interaction.channel.id
     }
-    if(amount>=100){
+    if(amount>100){
         interaction.reply({
             content:`The max number of messages deleted should be 100\nInput was ${amount}`,
             ephemeral:false,
