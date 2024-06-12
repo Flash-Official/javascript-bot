@@ -59,5 +59,6 @@ module.exports = async (client) => {
       console.log(`There was an error: ${error}`);
     }
   }
+  // client.application.commands.set([])
   
 };

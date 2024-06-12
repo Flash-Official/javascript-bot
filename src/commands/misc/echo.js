@@ -17,7 +17,7 @@ module.exports={
 
     name: 'echo',
     description: 'says the text which you type',
-    devOnly: true,
+    devOnly: false,
     // testOnly:Boolean,
     //options:Object[],
     //deleted:true,

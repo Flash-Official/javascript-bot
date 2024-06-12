@@ -80,6 +80,9 @@ module.exports = (client) => {
     else if(msg.content.toLowerCase().includes("display")){
       msg.reply("Are you talking about Display,The almighty god of super ultimate epic legendary coolness? 😎🤙")
     }
+    else if(msg.content.toLowerCase().includes("mannu")){
+      msg.reply("Are you talking about Mannu,The God of Programming? :computer: :speaking_head: :fire: :fire: ")
+    }
   
 
 });
