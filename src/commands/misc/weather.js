@@ -27,17 +27,25 @@ module.exports={
         fetch(url) 
     .then(response => response.json())
     .then(x=> {
-        
-    const y = x["main"]
+    try {
+        const y = x["main"]
     const t = y["temp"]
     const p = y["pressure"]
     const h = y["humidity"]
     const z = x["weather"]
     const weather_description = z[0]["description"]
-    const a = `The Temperate details in ${capitalize(q)}:\nTemperature is ${String(t)} degrees Celsius.\nThe atmospheric pressure is ${String(p)} in HPA units.\nThe humidity is ${String(h)} percent.\nThe weather can be described as ${capitalize(String(weather_description))}`
+    const a = `The Temperate details in ${capitalize(q)}:\nTemperature is ${String(t)} degrees Celsius.\nThe atmospheric pressure is ${String(p)} in HPA units.\nThe humidity is ${String(h)} percent.\nThe weather can be described as "${capitalize(String(weather_description))}"`
     interaction.reply({
         content:a,
     })
+        
+    } catch (error) {
+        interaction.reply({
+            content:`There was an error in fetching the weather report of the place:"${capitalize(q)}".\nPlease try again`,
+        })
+        
+    }
+    
     });
     }
 

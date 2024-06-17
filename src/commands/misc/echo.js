@@ -5,6 +5,9 @@ const {
     PermissionFlagsBits,
 } = require('discord.js');
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 module.exports={
 
@@ -35,19 +38,21 @@ module.exports={
         },
     ],
     //deleted:Boolean,
-
+    
     callback:async(client,interaction) =>{
+        
         const message = interaction.options.get('text').value;
-        const channel =
+        const channelss =
         interaction.options.get('channel')?.value || interaction.channel.id;
-        client.channels.cache.get(channel).send(message)
         interaction.reply({
             content: "The message has been sent",
             ephemeral: true,
-
-    })
-
-
+        })
+        await client.channels.cache.get(channelss).sendTyping();
+        
+        setTimeout(() => {
+            client.channels.cache.get(channelss).send(message)
+        }, 5000);
         
     }
 

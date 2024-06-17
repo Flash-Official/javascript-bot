@@ -38,10 +38,14 @@ const {
       const botRolePosition = interaction.guild.members.me.roles.highest.position; 
   
       if (targetUserRolePosition >= requestUserRolePosition) {
-        await interaction.editReply(
-          "You can't ban that user because they have the same/higher role than you."
-        );
-        return;
+        if(interaction.member.id===interaction.guild.ownerId){
+
+        }else{
+          await interaction.editReply(
+            "You can't kick that user because they have the same/higher role than you."
+          );
+          return;
+        }
       }
   
       if (targetUserRolePosition >= botRolePosition) {
