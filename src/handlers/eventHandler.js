@@ -1,7 +1,7 @@
 const path = require('path');
 const getAllFiles = require('../utils/getAllFiles');
 const { messageLink } = require('discord.js');
-
+let objectArray = [];
 module.exports = (client) => {
   /**
  *
@@ -24,7 +24,59 @@ module.exports = (client) => {
         const eventFunction = require(eventFile);
         await eventFunction(client, arg);
       }
-    });
+      const fs = require('fs');
+      const sqlite3 = require('sqlite3').verbose();
+
+      const dbFile = 'responses.db';
+
+      
+
+      const db = new sqlite3.Database(dbFile, (err) => {
+          if (err) {
+              console.error('Database connection error:', err.message);
+          } else {
+              fetchAndUpdateObjectArray();
+          }
+      });
+      
+
+      
+      
+
+
+      function fetchAndUpdateObjectArray() {
+          db.all('SELECT rowid, calls, responses FROM calls_responses', [], (err, rows) => {
+              if (err) {
+                  console.error('Error fetching data:', err.message);
+                  return;
+              }
+
+            
+              let newRowsMap = new Map();
+              rows.forEach((row) => {
+                  newRowsMap.set(row.rowid, { calls: row.calls, responses: row.responses });
+              });db
+
+              
+              let updatedObjectArray = [];
+              newRowsMap.forEach((value, key) => {
+                  updatedObjectArray.push(value);
+              });
+
+              
+              objectArray = updatedObjectArray;
+
+          });
+      }
+
+
+        const POLLING_INTERVAL = 5000;
+
+
+        setInterval(fetchAndUpdateObjectArray, POLLING_INTERVAL);
+              
+        });
+    
     
   }
 
@@ -37,13 +89,10 @@ module.exports = (client) => {
 
     }
     
-    else if(msg.content.toLowerCase().includes("your bot")) {
-        msg.reply("Talking about me?\nYoung lads")
-    }
     else if(msg.content.toLowerCase().includes("flash")){
         const flash="1105482048656916572"
         if(msg.content.toLowerCase().includes("..")){
-        msg.reply(`Are you talking about Flash, the hot daddy? :hot_face: :speaking_head: :fire: :fire: :yum: `)
+        msg.reply(``)
         }
         link=msg.url
         const final=`Content:${msg.content}\nBy:${msg.author}\nLink:${link}`
@@ -52,38 +101,11 @@ module.exports = (client) => {
           flashuser.send(final)
         });
     }
-    
-      
-    
-    else if(msg.content.toLowerCase().includes("shaunie")){
-      msg.reply("Are you talking about Shaunie,the sexy man? :speaking_head: :fire:")
+  loop1:for(let arr of objectArray){
+    if(msg.content.toLowerCase().includes(arr.calls)){
+      msg.reply(arr.responses)
+      break loop1;
     }
-    else if(msg.content.toLowerCase().includes("sentient")){
-      msg.reply("Are you talking about sentient,the child lover? 👶💋")
-    }
-    else if(msg.content.toLowerCase().includes("astra")){
-      msg.reply("Are you talking about Astra,the black nigger? 👽👺👹🤢🤮🫨👤😈")
-    }
-    else if(msg.content.toLowerCase().includes("aasakt")){
-      msg.reply("Are you talking about Aasakt,Milky boy, bahar se safed andar se kala and taller than flash ? :rage: :pray: :yum: :speaking_head: :fire: ")
-    }
-    else if(msg.content.toLowerCase().includes("reign")){
-      msg.reply("Are you talking about Reign,The Man,The Myth,The Mystery,The Legend.? :speaking_head: :fire: :fire:  ")
-
-    }
-    else if(msg.content.toLowerCase().includes("zar")){
-      msg.reply("Are you talking bout zar, the 72 legend zar 🫵🏾 🦍")
-    }
-    else if(msg.content.toLowerCase().includes("leejah")){
-      msg.reply("Are you talking about Leejah,the chappal chor ? 😎✋")
-    }
-    else if(msg.content.toLowerCase().includes("display")){
-      msg.reply("Are you talking about Display,The almighty god of super ultimate epic legendary coolness? 😎🤙")
-    }
-    else if(msg.content.toLowerCase().includes("mannu")){
-      msg.reply("Are you talking about Mannu,The God of Programming? :computer: :speaking_head: :fire: :fire: ")
-    }
-  
-
+  }
 });
 };
