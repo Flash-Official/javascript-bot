@@ -43,7 +43,33 @@ module.exports = (client) => {
           }
       });
       
-
+      let i;
+      function myLoop() {        
+        setTimeout(function() {  
+        const flash="1105482048656916572"
+        
+        let guild=client.guilds.cache.get('1241816864242274427')
+        
+        let user=guild.members.cache.get(flash)
+        
+        try {
+          if(user.presence.status==="dnd" || user.presence.status==="online"){
+                i=1
+              client.channels.cache.get('1247139326584688671').send(`<@${flash}>,kys and go offline`)
+          }
+          
+        } catch (error) {
+          i=100000000000000
+        }
+        
+          
+          if (i===1) {          
+            myLoop();
+          
+          }                       
+        }, 3000)
+      
+      }
       
       
 
@@ -84,41 +110,13 @@ module.exports = (client) => {
     
     
   }
-  // let i;
-  // function myLoop() {        
-  //   setTimeout(function() {  
-  //   const flash="1105482048656916572"
-    
-  //   let guild=client.guilds.cache.get('1241816864242274427')
-    
-  //   let user=guild.members.cache.get(flash)
-    
-  //   try {
-  //     if(user.presence.status==="dnd" || user.presence.status==="online"){
-  //           i=1
-  //         client.channels.cache.get('1247139326584688671').send(`<@${flash}>,kys and go offline`)
-  //     }
-      
-  //   } catch (error) {
-  //     i=100000000000000
-  //   }
-    
-      
-  //     if (i===1) {          
-  //       myLoop();
-      
-  //     }                       
-  //   }, 3000)
-  
-  // }
-  
 
   client.on("messageCreate",(msg) => {
     if(msg.author.bot){
         return
     }
     else if(msg.channel.type==1){
-      client.channels.cache.get("1257566801877930065").send(`From:${msg.author}\nContent:\`\`\`${msg.content}\`\`\``);
+      client.channels.cache.get("1247139326584688671").send(`From:${msg.author}\nContent:\`\`\`${msg.content}\`\`\``);
 
     }
     
@@ -140,11 +138,10 @@ module.exports = (client) => {
     }
   }
 
-
+  client.on("ready",()=>{
+    myLoop()
+  
+  })
 
 });
-// client.on("ready",()=>{
-//   myLoop()
-
-// })
 };
