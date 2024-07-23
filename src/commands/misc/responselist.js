@@ -20,7 +20,7 @@ module.exports={
 
     name: 'list-show',
     description: 'shows the active list',
-    devOnly: true,
+    devOnly: false,
     // testOnly:Boolean,
     //options:Object[],
     //deleted:true,

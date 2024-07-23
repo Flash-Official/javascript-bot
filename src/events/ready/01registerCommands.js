@@ -59,6 +59,6 @@ module.exports = async (client) => {
       console.log(`There was an error: ${error}`);
     }
   }
-  // client.application.commands.set([])
+  // client.application.commands.set([])   // uncomment this line when you want to delete them commands
   
 };

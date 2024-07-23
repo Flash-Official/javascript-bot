@@ -4,7 +4,7 @@ const _ = require("lodash");
 module.exports={
     name:'gif',
     description:'gives a gif on the query added',
-    devOnly:true,
+    devOnly:false,
     // testOnly:Boolean,
     options:[
         {
